@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선승빈 | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR & Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+        }
+        /* 참고 이미지와 유사한 부드럽고 몽환적인 파스텔 백그라운드 블러 효과 */
+        .glow-blob {
+            filter: blur(80px);
+            opacity: 0.45;
+            will-change: transform;
+        }
+        /* 메인 그라디언트 텍스트 효과 */
+        .text-gradient {
+            background: linear-gradient(135deg, #2563eb 30%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen relative overflow-x-hidden selection:bg-blue-100">
+
+    <!-- 배경 파스텔 블러 데코레이션 (Hero 이미지의 파스텔 톤앤매너 재현) -->
+    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-200 glow-blob pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-purple-200 glow-blob pointer-events-none z-0"></div>
+    <div class="absolute bottom-[10%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-blue-100 glow-blob pointer-events-none z-0"></div>
+
+    <!-- 네비게이션 바 -->
+    <header class="fixed top-0 left-0 w-full bg-white/75 backdrop-blur-md border-b border-slate-100/80 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- 로고 (MyPortfolio.) -->
+            <a href="#" class="text-xl md:text-2xl font-extrabold tracking-tight text-blue-600 hover:opacity-80 transition-opacity">
+                MyPortfolio<span class="text-purple-600">.</span>
+            </a>
+            <!-- 데스크톱 메뉴 -->
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#home" class="hover:text-blue-600 transition-colors">소개</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors">인적사항</a>
+                <a href="#skills" class="hover:text-blue-600 transition-colors">기술</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors">프로젝트</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">연락처</a>
+            </nav>
+            <!-- 모바일 메뉴 버튼 -->
+            <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-blue-600 focus:outline-none" aria-label="메뉴 열기">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-b border-slate-100 px-6 py-4 space-y-4">
+            <a href="#home" class="block text-slate-600 hover:text-blue-600 font-medium py-1">소개</a>
+            <a href="#about" class="block text-slate-600 hover:text-blue-600 font-medium py-1">인적사항</a>
+            <a href="#skills" class="block text-slate-600 hover:text-blue-600 font-medium py-1">기술</a>
+            <a href="#projects" class="block text-slate-600 hover:text-blue-600 font-medium py-1">프로젝트</a>
+            <a href="#contact" class="block text-slate-600 hover:text-blue-600 font-medium py-1">연락처</a>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 (image_07d2c1.png 스타일 완벽 구현) -->
+    <section id="home" class="relative pt-36 pb-24 md:pt-48 md:pb-36 flex flex-col items-center justify-center min-h-[90vh] z-10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <!-- 상단 작은 카테고리 태그 -->
+            <span class="text-blue-600 font-bold tracking-widest text-xs md:text-sm uppercase block mb-4 bg-blue-50/80 py-1.5 px-4 rounded-full w-max mx-auto border border-blue-100">
+                WELCOME TO MY PORTFOLIO
+            </span>
+            
+            <!-- 메인 슬로건 타이틀 -->
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-8">
+                안녕하세요, <span class="text-gradient">코딩 애호가</span><br>
+                선승빈입니다.
+            </h1>
+            
+            <!-- 서브 텍스트 (이미지 텍스트 인용) -->
+            <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-12">
+                새로운 기술을 배우고 문제를 해결하는 것을 즐깁니다.<br>
+                사용자 경험을 중요하게 생각하며 깔끔한 코드를 작성하기 위해 노력합니다.
+            </p>
+            
+            <!-- 액션 버튼 가로 배치 -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <a href="#projects" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/15 hover:shadow-xl transition-all duration-300 text-center text-sm md:text-base">
+                    프로젝트 보기
+                </a>
+                <a href="#contact" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 font-bold px-8 py-3.5 rounded-full border border-slate-200 shadow-sm transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2">
+                    연락하기
+                </a>
+            </div>
+            
+            <!-- 이메일 아이콘 버튼 -->
+            <div class="flex justify-center">
+                <a href="#contact" class="p-3 bg-white hover:bg-blue-50 text-slate-500 hover:text-blue-600 rounded-full border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 인적사항 섹션 (image_07d282.png 스타일 완벽 구현) -->
+    <section id="about" class="relative py-28 bg-white/70 backdrop-blur-sm border-y border-slate-100/50 z-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- About Me 타이틀 헤더 -->
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-black text-slate-900 inline-block relative pb-3 tracking-wide">
+                    About Me
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-[3px] bg-blue-600 rounded-full"></span>
+                </h2>
+            </div>
+
+            <!-- 메인 그리드 레이아웃 -->
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <!-- 좌측 원형 드로잉 심볼 그래픽 -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative p-6 bg-white rounded-full border border-slate-100 shadow-xl w-64 h-64 md:w-72 md:h-72 flex items-center justify-center transition-transform duration-500 hover:scale-[1.02]">
+                        <!-- 내부 원형 일러스트레이션 (두 번째 참고 이미지의 원형 구조 스타일) -->
+                        <div class="border-[2px] border-black rounded-full w-full h-full flex flex-col items-center justify-center p-6 relative">
+                            <!-- 회로 패턴 및 코드 데코레이션 -->
+                            <div class="absolute top-4 left-4 w-2 h-2 rounded-full bg-blue-500"></div>
+                            <div class="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-purple-500"></div>
+                            <svg class="w-20 h-20 text-slate-800 mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"></path>
+                            </svg>
+                            <span class="text-sm font-extrabold tracking-widest text-slate-900">WEB DEV</span>
+                            <span class="text-[10px] text-blue-600 font-bold tracking-tight uppercase mt-0.5">DONGYANG MIRAE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측 자기소개 텍스트 및 핵심 정보 카드 -->
+                <div class="md:col-span-7 space-y-6">
+                    <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-snug">
+                        어제보다 오늘 더 성장하는 개발자, <span class="text-blue-600">선승빈</span>입니다.
+                    </h3>
+                    
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed">
+                        안녕하세요! 배움의 가치를 알고 끈기 있게 실행하는 동양미래대학교 컴퓨터소프트웨어공학과 전공생 선승빈입니다. 
+                        코드를 작성하며 마주하는 수많은 문제와 에러들을 성장의 기회로 여기며, 웹 프로그래밍을 통해 사용자들에게 만족스럽고 실질적인 가치를 제공하는 서비스를 만드는데 관심을 가지고 집중하고 있습니다.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed">
+                        저의 가장 강력한 무기는 <strong>"어려운 일이 있어도 항상 긍정적인 자세로 끈기 있게 돌파해 나가는 마음가짐"</strong>입니다. 
+                        지치지 않는 열정으로 탄탄한 기본기를 기르며 꾸준히 전진하고 있습니다.
+                    </p>
+
+                    <!-- 메타 인포 아이콘 정렬 리스트 (image_07d282.png와 유사) -->
+                    <div class="grid sm:grid-cols-2 gap-4 pt-6 border-t border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="text-blue-500">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs md:text-sm font-medium text-slate-600">대한민국, 경기도 시흥시</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="text-blue-500">
+                                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs md:text-sm font-medium text-slate-600">동양미래대학교 컴퓨터소프트웨어공학과</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="text-blue-500">
+                                <i data-lucide="code-2" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs md:text-sm font-medium text-slate-600">웹프로그래밍 / 풀스택 관심</span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="text-blue-500">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs md:text-sm font-medium text-slate-600">긍정적 사고와 지속적인 성장 끈기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기술 섹션 (Skills) -->
+    <section id="skills" class="py-24 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-slate-900 inline-block relative pb-3 tracking-wide">
+                    Skills & Competence
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-[3px] bg-blue-600 rounded-full"></span>
+                </h2>
+                <p class="text-slate-500 mt-2 text-sm">목표를 이루기 위해 차근차근 다져온 핵심 기술 역량입니다.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend 개발 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="browser" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Web Frontend</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed mb-6">
+                        HTML, CSS, JavaScript를 탄탄히 학습하고 있습니다. 반응형 웹 환경과 최적화된 사용자 인터페이스를 구상하는 것에 큰 열정을 느낍니다.
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>HTML5 / CSS3</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>JavaScript (ES6)</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CS / Backend 전공 지식 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="terminal" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">CS & Database</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed mb-6">
+                        대학 학과 과정에서 배운 컴퓨터 전반 지식과 객체 지향 프로그래밍(OOP) 기초 및 관계형 데이터베이스(SQL) 지식을 학습하고 있습니다.
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Java Programming</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-purple-600 h-1.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>MySQL / RDBMS</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-purple-600 h-1.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 가치관 및 협업툴 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow sm:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Mindset & Tools</h3>
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed mb-6">
+                        "어려워도 포기하지 않고 끈기 있게 전진한다"는 가치관을 실천합니다. Git과 Github를 사용해 소스 코드를 체계적으로 기록하고 관리합니다.
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>끈기 및 긍정 에너지</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                <span>Git / Github 협업 기초</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 섹션 (Projects) -->
+    <section id="projects" class="py-24 bg-white/60 backdrop-blur-sm border-t border-slate-100/50 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-slate-900 inline-block relative pb-3 tracking-wide">
+                    Projects
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-[3px] bg-blue-600 rounded-full"></span>
+                </h2>
+                <p class="text-slate-500 mt-2 text-sm">경험을 통해 배운 기술과 열정이 담긴 프로젝트 결과물입니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 프로젝트 1: 포트폴리오 웹사이트 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+                    <!-- 그라데이션 커버 상단 디자인 -->
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-white h-44 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-[10px] bg-white/20 px-3 py-1 rounded-full font-bold uppercase tracking-wider">Web Application</span>
+                            <i data-lucide="app-window" class="w-7 h-7 opacity-80"></i>
+                        </div>
+                        <div class="z-10">
+                            <h3 class="text-xl md:text-2xl font-black tracking-tight">선승빈 개인 포트폴리오</h3>
+                            <p class="text-xs opacity-85 mt-1">HTML, CSS, Tailwind CSS, JavaScript</p>
+                        </div>
+                    </div>
+                    <!-- 프로젝트 바디 설명 -->
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-6">
+                            동양미래대학교 학업 정보와 저만의 개발 철학을 녹여내기 위해 직접 디자인을 고안하고 개발한 반응형 웹 포트폴리오입니다. 트렌디한 백그라운드 블러 기법과 모던 카드를 적극 도입하여 시각적 직관성을 향상시켰습니다.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-blue-600">Personal Project</span>
+                            <div class="flex gap-2">
+                                <span class="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-xs font-medium">Responsive</span>
+                                <span class="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-xs font-medium">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 프로젝트 2: 긍정 강화 Todo 리스트 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+                    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-8 text-white h-44 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-[10px] bg-white/20 px-3 py-1 rounded-full font-bold uppercase tracking-wider">Toy Project</span>
+                            <i data-lucide="check-square" class="w-7 h-7 opacity-80"></i>
+                        </div>
+                        <div class="z-10">
+                            <h3 class="text-xl md:text-2xl font-black tracking-tight">긍정 응원 할 일 관리 앱</h3>
+                            <p class="text-xs opacity-85 mt-1">Vanilla JavaScript, CSS, HTML</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-6">
+                            "어려운 일도 극복해 낸다"는 끈기 모토를 담은 토이 웹 애플리케이션입니다. 할 일을 완수하거나 실패할 때 긍정 에너지를 채워주는 맞춤 멘트를 동적으로 호출하여 지속적인 행동 동기를 돕습니다.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-purple-600">Mini Project</span>
+                            <div class="flex gap-2">
+                                <span class="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-xs font-medium">Vanilla JS</span>
+                                <span class="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-xs font-medium">State Manage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 가치관 강조 배너 -->
+    <section class="py-24 bg-gradient-to-br from-blue-600 to-indigo-700 text-white relative overflow-hidden z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent)]"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-20">
+            <i data-lucide="quote" class="w-10 h-10 mx-auto mb-6 opacity-30"></i>
+            <blockquote class="text-lg md:text-2xl font-bold leading-relaxed mb-6">
+                "성공이란 결코 꺾이지 않고 끝끝내 나아가는 끈기에 의해 완성된다고 믿습니다.<br>
+                어떤 과제가 주어지든 항상 미소 띤 긍정의 힘으로 극복하겠습니다."
+            </blockquote>
+            <cite class="text-xs md:text-sm font-semibold opacity-75 block tracking-widest">— 선승빈, 끊임없이 연구하는 개발자</cite>
+        </div>
+    </section>
+
+    <!-- 연락처 섹션 (Contact) -->
+    <section id="contact" class="py-28 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-slate-900 inline-block relative pb-3 tracking-wide">
+                    Contact Me
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-[3px] bg-blue-600 rounded-full"></span>
+                </h2>
+                <p class="text-slate-500 mt-2 text-sm">새로운 성장의 여정을 선승빈과 함께 그려나가 보세요.</p>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-12">
+                <!-- 연락 수단 정보 -->
+                <div class="md:col-span-5 space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <h3 class="text-base font-bold text-slate-900 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">이메일</p>
+                                    <a href="mailto:ssb2026@dongyang.ac.kr" class="text-xs md:text-sm font-bold text-slate-800 hover:text-blue-600 transition-colors">ssb2026@dongyang.ac.kr</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">활동 위치</p>
+                                    <p class="text-xs md:text-sm font-bold text-slate-800">대한민국, 경기도 시흥시</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">깃허브 주소</p>
+                                    <a href="https://github.com" target="_blank" class="text-xs md:text-sm font-bold text-slate-800 hover:text-blue-600 transition-colors">github.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 메시지 입력 폼 -->
+                <div class="md:col-span-7">
+                    <form id="contact-form" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-6">
+                        <div>
+                            <label for="name" class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">보내시는 분 이름</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-colors outline-none text-sm" placeholder="성함 또는 기업명을 적어주세요.">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">회신 받으실 이메일</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-colors outline-none text-sm" placeholder="이메일 주소를 적어주세요.">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">메시지 내용</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-colors outline-none text-sm resize-none" placeholder="협업 및 커피챗 등 승빈님께 전하고 싶은 내용을 적어주세요."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm md:text-base">
+                            <i data-lucide="send" class="w-4 h-4"></i> 메시지 전송하기
+                        </button>
+                    </form>
+                    <!-- 전송 완료 커스텀 성공 알림 박스 (브라우저 내장 alert 최소화) -->
+                    <div id="form-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm font-semibold text-center flex items-center justify-center gap-2">
+                        <i data-lucide="badge-check" class="w-5 h-5"></i> 성공적으로 메시지가 접수되었습니다. (감사합니다!)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-slate-100 py-12 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-xs md:text-sm text-slate-400">
+                &copy; 2026 Seungbin Seon. All Rights Reserved.
+            </p>
+            <div class="flex items-center gap-4 text-xs md:text-sm text-slate-400">
+                <p>동양미래대학교 컴퓨터소프트웨어공학과</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 자바스크립트 소스 코드 -->
+    <script>
+        // Lucide SVG 아이콘 초기화 렌더링
+        lucide.createIcons();
+
+        // 모바일 헤더 메뉴 토글 인터랙션
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            } else {
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        // 연락처 폼 제출 비동기 모사 및 피드백 기능
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            
+            // 4초가 흐른 후 메시지 숨김 처리
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 4000);
+        });
+
+        // 윈도우 스크롤 동작에 따른 헤더 디자인 체인저
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.classList.add('shadow-sm', 'bg-white/95');
+                header.classList.remove('bg-white/75');
+            } else {
+                header.classList.remove('shadow-sm', 'bg-white/95');
+                header.classList.add('bg-white/75');
+            }
+        });
+    </script>
+</body>
+</html>
